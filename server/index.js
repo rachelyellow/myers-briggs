@@ -5,6 +5,8 @@
 const express = require('express');
 const app = express();
 const PORT = 5000;
+const knexConfig = require("./knexconfig");
+const knex = require('knex')(knexConfig);
 
 app.get('/', (req, res) => {
   res.send('hello world');
