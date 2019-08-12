@@ -12,9 +12,17 @@ const knexConfig = require("./knexfile");
 const knex = require('knex')(knexConfig[ENV]);
 
 
-
 app.get('/', (req, res) => {
-  res.send('hello world');
+  new Promise(function(resolve, reject) {
+    knex
+      .select()
+      .from("questions")
+      .then((results) => {
+        resolve(results);
+    });
+  }).then(function(values) {
+    res.send(values);
+  })
 });
 
 
