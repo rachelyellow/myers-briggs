@@ -1,16 +1,32 @@
 .App {
   text-align: center;
 }
+
 .card {
   margin: auto;
-  border: 1px solid lightgray;
-  width: 50%;
-  padding: 1em 0 3em;
+  text-align: center;
+  border: .5px solid lightgray;
+  width: 60%;
+  padding: 1rem 0 2rem;
   border-radius: .3em;
 }
 
+.scaletext {
+  padding: 0 1rem;
+}
+
+.answerbox {
+  margin: auto;
+  min-width: 50%;
+  margin-top: 2.5rem;
+}
+
+.dots {
+  padding: 0 1.5em;
+}
+
 #emailinput {
-  width: 50%;
+  min-width: 50%;
   height: 2rem;
 }
 

@@ -9,17 +9,19 @@ function QuestionCard({ data }) {
   return(
     <div className='card'>
       <p>{data.text}</p>
-      <div>
-        <input type="radio" name={'answer' + data.id} value="1"/>
-        <input type="radio" name={'answer' + data.id} value="2"/>
-        <input type="radio" name={'answer' + data.id} value="3"/>
-        <input type="radio" name={'answer' + data.id} value="4"/>
-        <input type="radio" name={'answer' + data.id} value="5"/>
-        <input type="radio" name={'answer' + data.id} value="6"/>
-        <input type="radio" name={'answer' + data.id} value="7"/>
-        <input type="radio" name={'answer' + data.id} value="8"/>
-        <input type="radio" name={'answer' + data.id} value="9"/>
-        <input type="radio" name={'answer' + data.id} value="10"/>
+      <div className="answerbox">
+      Disagree&ensp;
+        <input className="dots" type="radio" name={'answer' + data.id} value="1"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="2"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="3"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="4"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="5"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="6"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="7"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="8"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="9"/>
+        <input className="dots" type="radio" name={'answer' + data.id} value="10"/>
+        &emsp;Agree
       </div>
     </div>
   )
