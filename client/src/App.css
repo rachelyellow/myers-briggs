@@ -2,6 +2,25 @@
   text-align: center;
 }
 
+#resultspage {
+  display: flex;
+  border: 1px solid lightgrey;
+  width: 90%;
+  border-radius: .5rem;
+  margin: auto;
+  padding: 3rem;
+}
+
+.left {
+  width: 25%;
+}
+
+.right {
+  width: 75%;
+  padding: 1em;
+  margin: auto;
+}
+
 .card {
   margin: auto;
   text-align: center;
@@ -27,16 +46,22 @@
 
 .perspective {
   display: flex;
+  padding: .5em 0;
 }
 
-.coloured {
+.bar.coloured {
+  border: 1px solid purple;
   background-color: purple;
 }
 
 .bar {
   width: 200px;
   height: 1em;
-  border: 1px solid black;
+  border: 1px solid lightgrey;
+}
+
+.inline {
+  width: 30%;
 }
 
 #emailinput {
