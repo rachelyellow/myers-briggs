@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.get('/', (req, res) => {
+app.get('/questions', (req, res) => {
   new Promise(function(resolve, reject) {
     knex
       .select()

@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     async function getQuestions() {
-      axios.get('http://localhost:5000/')
+      axios.get('http://localhost:5000/questions')
       .then(response => setQuestions(response.data))
     }
     getQuestions();
