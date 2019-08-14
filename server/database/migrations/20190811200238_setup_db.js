@@ -18,7 +18,7 @@ exports.up = function(knex) {
     knex.schema.createTable("users", function(table) {
       table.increments("id").primary();
       table.string("email").notNullable();
-      table.string("perspective_result");
+      table.string("perspective_result").notNullable();
     })
 
   ]);

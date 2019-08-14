@@ -11,6 +11,10 @@ const PORT = 5000;
 const knexConfig = require("./knexfile");
 const knex = require('knex')(knexConfig[ENV]);
 
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+
 // Add headers
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -34,6 +38,24 @@ app.get('/questions', (req, res) => {
   })
 });
 
+app.post('/users', (req, res) => {
+  knex
+  .insert(req.body)
+  .returning(['id', 'email', 'perspective_result'])
+  .into('users')
+  .then(id => res.status(200).send(id));
+  // res.send([id, email, perspective_result])
+  console.log(req.body);
+  console.log(res);
+})
+
+app.post('/answers', (req, res) => {
+  // knex
+  // .insert(req.body)
+  // .into('answers')
+  // .then(ids => res.status(200).send(ids));
+  console.log(req.body)
+})
 
 
 app.listen(PORT, () => {

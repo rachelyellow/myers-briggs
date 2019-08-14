@@ -1,11 +1,50 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import QuestionCard from './QuestionCard.js'
 
 function PerspectiveTest({ questions }) {
 
   const [userEmail, setUserEmail] = useState('');
   const [answers, setAnswers] = useState([]);
-  const [result, setResult] = useState('');
+
+  function getResult() {
+    const MBTI = {};
+    answers.forEach(function(answer) {
+      if (MBTI[answer.category]) {
+        MBTI[answer.category] += answer.agree_rating;
+      } else {
+        MBTI[answer.category] = answer.agree_rating;
+      }
+    })
+    // console.log(answers);
+    let resultStr = ''
+    MBTI.I > MBTI.E ? resultStr += 'I' : resultStr += 'E';
+    MBTI.N > MBTI.S ? resultStr += 'N' : resultStr += 'S';
+    MBTI.F > MBTI.T ? resultStr += 'F' : resultStr += 'T';
+    MBTI.P > MBTI.J ? resultStr += 'P' : resultStr += 'J';
+    console.log(resultStr);
+    return resultStr;
+  }
+
+  function sendToDB(MBTIresult) {
+    // create new user with email address
+    axios.post('http://localhost:5000/users', {
+      email: userEmail,
+      perspective_result: MBTIresult
+    }).then(function(response) {
+      const userId = response.data[0].id;
+      answers.forEach(function(answer) {
+        answer.user_id = userId;
+        delete answer.category;
+      })
+      console.log(response.data);
+      axios.post('http://localhost:5000/answers', answers)
+        .then(response => console.log('added answers!'))
+  
+    }).catch(function(error) {
+      console.log(error);
+    })
+  }
 
 
   const submitInput = e => {
@@ -15,9 +54,8 @@ function PerspectiveTest({ questions }) {
     } else if (!userEmail.match('^.+@[^\.].*\.[a-z]{2,}$')) {
       alert('Please enter a valid email address.')
     } else {
-      answers.sort(function(a, b) {
-        return a.question_id -b.question_id;
-      })
+      const result = getResult();
+      sendToDB(result);
     }
     console.log(answers, userEmail);
   }
