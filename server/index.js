@@ -50,10 +50,10 @@ app.post('/users', (req, res) => {
 })
 
 app.post('/answers', (req, res) => {
-  // knex
-  // .insert(req.body)
-  // .into('answers')
-  // .then(ids => res.status(200).send(ids));
+  knex
+  .insert(req.body)
+  .into('answers')
+  .then(ids => res.status(200).send(ids));
   console.log(req.body)
 })
 

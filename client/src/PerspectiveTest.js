@@ -79,9 +79,10 @@ function PerspectiveTest({ questions, setUser }) {
         })}
       </div>
       <div className='card'>
-        <label for='emailinput'><h3>Your Email</h3></label>
+        <label for='emailinput'><h2>Your Email</h2></label>
         <input id='emailinput' placeholder='you@example.com' onChange={e => setUserEmail(e.target.value)}></input>
       </div>
+      <button type='submit'>Save & Continue</button>
     </form>
   )
 }

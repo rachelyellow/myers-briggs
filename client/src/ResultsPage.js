@@ -6,7 +6,6 @@ function ResultsPage({ user }) {
     <div id="resultspage">
 
       <div className='left'>
-        <h3>{user.email}</h3>
         <h1>Your Perspective</h1>
         <h3>Your perspective is {user.perspective_result}</h3>
       </div>

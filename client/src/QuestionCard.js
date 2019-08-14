@@ -17,7 +17,7 @@ function QuestionCard({ question, modifyAnswers }) {
     <div className='card'>
       <p>{question.text}</p>
       <div className="answerbox" onChange={updateInput}>
-      Disagree&ensp;
+        <span className='disagree'>Disagree</span>
         <input className="dots" type="radio" name={'answer' + question.id} category={question.category} value="1"/>
         <input className="dots" type="radio" name={'answer' + question.id} category={question.category} value="2"/>
         <input className="dots" type="radio" name={'answer' + question.id} category={question.category} value="3"/>
@@ -25,7 +25,7 @@ function QuestionCard({ question, modifyAnswers }) {
         <input className="dots" type="radio" name={'answer' + question.id} category={question.category} value="5"/>
         <input className="dots" type="radio" name={'answer' + question.id} category={question.category} value="6"/>
         <input className="dots" type="radio" name={'answer' + question.id} category={question.category} value="7"/>
-        &emsp;Agree
+        <span className='agree'>Agree</span>
       </div>
     </div>
   )
