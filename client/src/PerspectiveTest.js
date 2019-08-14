@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import QuestionCard from './QuestionCard.js'
 
-function PerspectiveTest({ questions }) {
+function PerspectiveTest({ questions, setUser }) {
 
   const [userEmail, setUserEmail] = useState('');
   const [answers, setAnswers] = useState([]);
@@ -38,6 +38,7 @@ function PerspectiveTest({ questions }) {
         delete answer.category;
       })
       console.log(response.data);
+      setUser(response.data[0])
       axios.post('http://localhost:5000/answers', answers)
         .then(response => console.log('added answers!'))
   

@@ -25,6 +25,20 @@
   padding: 0 1.5em;
 }
 
+.perspective {
+  display: flex;
+}
+
+.coloured {
+  background-color: purple;
+}
+
+.bar {
+  width: 200px;
+  height: 1em;
+  border: 1px solid black;
+}
+
 #emailinput {
   min-width: 50%;
   height: 2rem;
