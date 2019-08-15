@@ -6,6 +6,8 @@ exports.up = function(knex) {
       table.increments("id").primary();
       table.string("text");
       table.string("meaning");
+      table.string("dimension");
+      table.integer("direction");
     }),
 
     knex.schema.createTable("answers", function(table) {

@@ -44,9 +44,6 @@ app.post('/users', (req, res) => {
   .returning(['id', 'email', 'perspective_result'])
   .into('users')
   .then(id => res.status(200).send(id));
-  // res.send([id, email, perspective_result])
-  console.log(req.body);
-  console.log(res);
 })
 
 app.post('/answers', (req, res) => {
@@ -54,7 +51,6 @@ app.post('/answers', (req, res) => {
   .insert(req.body)
   .into('answers')
   .then(ids => res.status(200).send(ids));
-  console.log(req.body)
 })
 
 

@@ -8,21 +8,17 @@ function PerspectiveTest({ questions, setUser }) {
   const [answers, setAnswers] = useState([]);
 
   function getResult() {
-    const MBTI = {};
+    const MBTI = { EI: 0, SN: 0, TF: 0, JP: 0 };
     answers.forEach(function(answer) {
-      if (MBTI[answer.meaning]) {
-        MBTI[answer.meaning] += answer.agree_rating;
-      } else {
-        MBTI[answer.meaning] = answer.agree_rating;
-      }
+      // puts the rating on a scale from -3 to 3
+      const dimensionScale = (answer.agree_rating - 4) * answer.direction;
+      MBTI[answer.dimension] += dimensionScale;
     })
-    // console.log(answers);
     let resultStr = ''
-    MBTI.I > MBTI.E ? resultStr += 'I' : resultStr += 'E';
-    MBTI.N > MBTI.S ? resultStr += 'N' : resultStr += 'S';
-    MBTI.F > MBTI.T ? resultStr += 'F' : resultStr += 'T';
-    MBTI.P > MBTI.J ? resultStr += 'P' : resultStr += 'J';
-    console.log(resultStr);
+    MBTI.EI > 0 ? resultStr += 'I' : resultStr += 'E';
+    MBTI.SN > 0 ? resultStr += 'N' : resultStr += 'S';
+    MBTI.TF > 0 ? resultStr += 'F' : resultStr += 'T';
+    MBTI.JP > 0 ? resultStr += 'P' : resultStr += 'J';
     return resultStr;
   }
 
@@ -35,9 +31,9 @@ function PerspectiveTest({ questions, setUser }) {
       const userId = response.data[0].id;
       answers.forEach(function(answer) {
         answer.user_id = userId;
-        delete answer.meaning;
+        delete answer.dimension;
+        delete answer.direction;
       })
-      console.log(response.data);
       setUser(response.data[0])
       axios.post('http://localhost:5000/answers', answers)
         .then(response => console.log('added answers!'))
@@ -58,7 +54,6 @@ function PerspectiveTest({ questions, setUser }) {
       const result = getResult();
       sendToDB(result);
     }
-    console.log(answers, userEmail);
   }
 
   function modifyAnswers(newAnswer) {
@@ -66,7 +61,6 @@ function PerspectiveTest({ questions, setUser }) {
     const filteredAnswers = answers.filter(answer => answer.question_id !== questionID);
     const newAnswerList = [...filteredAnswers, newAnswer];
     setAnswers(newAnswerList);
-    console.log(newAnswerList);
   }
 
   return(
