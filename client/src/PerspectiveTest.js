@@ -10,10 +10,10 @@ function PerspectiveTest({ questions, setUser }) {
   function getResult() {
     const MBTI = {};
     answers.forEach(function(answer) {
-      if (MBTI[answer.category]) {
-        MBTI[answer.category] += answer.agree_rating;
+      if (MBTI[answer.meaning]) {
+        MBTI[answer.meaning] += answer.agree_rating;
       } else {
-        MBTI[answer.category] = answer.agree_rating;
+        MBTI[answer.meaning] = answer.agree_rating;
       }
     })
     // console.log(answers);
@@ -35,7 +35,7 @@ function PerspectiveTest({ questions, setUser }) {
       const userId = response.data[0].id;
       answers.forEach(function(answer) {
         answer.user_id = userId;
-        delete answer.category;
+        delete answer.meaning;
       })
       console.log(response.data);
       setUser(response.data[0])

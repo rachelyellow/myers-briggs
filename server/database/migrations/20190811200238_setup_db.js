@@ -5,7 +5,7 @@ exports.up = function(knex) {
     knex.schema.createTable("questions", function(table) {
       table.increments("id").primary();
       table.string("text");
-      table.string("category");
+      table.string("meaning");
     }),
 
     knex.schema.createTable("answers", function(table) {
