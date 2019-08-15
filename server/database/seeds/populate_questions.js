@@ -5,16 +5,16 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('questions').insert([
-        {id: 1, category: 'E', text: 'I feel invigorated from my time being around other people.'},
-        {id: 2, category: 'I', text: 'I’m comfortable being by myself and use this time to recharge.'},
-        {id: 3, category: 'S', text: 'I’m a practical person who tends to be concerned with the bottom line.'},
-        {id: 4, category: 'N', text: 'I like to solve problems by leaping between different possibilities and ideas.'},
-        {id: 5, category: 'T', text: 'I pride myself on making decisions with my head and being both fair and consistent.'},
-        {id: 6, category: 'F', text: 'I make decisions with my heart and strive to be compassionate.'},
-        {id: 7, category: 'J', text: 'I like to get my work done before playing.'},
-        {id: 8, category: 'J', text: 'I prefer to have things decided.'},
-        {id: 9, category: 'P', text: 'I prefer to keep things loose/casual. I’m not concerned with making a plan.'},
-        {id: 10, category: 'P', text: 'I am energized/stimulated by an approaching deadline.'}
+        {id: 1, category: 'I', text: 'You find it takes effort to introduce yourself to other people.'},
+        {id: 2, category: 'S', text: 'You consider yourself more practical than creative.'},
+        {id: 3, category: 'F', text: 'Winning a debate matters less to you than making sure no one gets upset.'},
+        {id: 4, category: 'E', text: 'You get energized going to social events that involve many interactions.'},
+        {id: 5, category: 'N', text: 'You often spend time exploring unrealistic and impractical yet intriguing ideas.'},
+        {id: 6, category: 'P', text: 'Deadlines seem to you to be of relative rather than absolute importance.'},
+        {id: 7, category: 'T', text: 'Logic is usually more important than heart when it comes to making important decisions.'},
+        {id: 8, category: 'J', text: 'Your home and work environments are quite tidy.'},
+        {id: 9, category: 'E', text: 'You do not mind being at the center of attention.'},
+        {id: 10, category: 'P', text: 'Keeping your options open is more important than having a to-do list.'}
       ]);
     });
 };
